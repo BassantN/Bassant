@@ -5,41 +5,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="icon" type="image/x-icon" href="https://19thnews.org/wp-content/uploads/2020/08/Dr.Afoh-Manin_KarlaGachet08.jpg">
+  <link rel="icon" type="image/x-icon"
+    href="https://19thnews.org/wp-content/uploads/2020/08/Dr.Afoh-Manin_KarlaGachet08.jpg">
   <title>Cadeau</title>
 
   <style>
     @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0); }
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
     }
 
     @keyframes popIn {
-      0% { transform: scale(0.4); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      0% {
+        transform: scale(0.4);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     @keyframes confettiFall {
-      0% { transform: translateY(-100vh) rotate(0); }
-      100% { transform: translateY(100vh) rotate(720deg); }
+      0% {
+        transform: translateY(-100vh) rotate(0);
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+      }
     }
 
     @keyframes spotlightMove {
-      0% { transform: rotate(-25deg) translateX(-30vw); }
-      50% { transform: rotate(25deg) translateX(30vw); }
-      100% { transform: rotate(-25deg) translateX(-30vw); }
+      0% {
+        transform: rotate(-25deg) translateX(-30vw);
+      }
+
+      50% {
+        transform: rotate(25deg) translateX(30vw);
+      }
+
+      100% {
+        transform: rotate(-25deg) translateX(-30vw);
+      }
     }
 
     @keyframes spotlightMove2 {
-      0% { transform: rotate(25deg) translateX(30vw); }
-      50% { transform: rotate(-25deg) translateX(-30vw); }
-      100% { transform: rotate(25deg) translateX(30vw); }
+      0% {
+        transform: rotate(25deg) translateX(30vw);
+      }
+
+      50% {
+        transform: rotate(-25deg) translateX(-30vw);
+      }
+
+      100% {
+        transform: rotate(25deg) translateX(30vw);
+      }
     }
 
     @keyframes rainbow {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      100% {
+        filter: hue-rotate(360deg);
+      }
     }
 
     .rainbowGlow {
@@ -60,14 +102,29 @@
     }
 
     @keyframes boomFlash {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      100% { opacity: 0; }
+      0% {
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
     }
 
     @keyframes shockwave {
-      0% { transform: scale(0); opacity: 0.9; }
-      100% { transform: scale(3); opacity: 0; }
+      0% {
+        transform: scale(0);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
     }
 
     #flash {
@@ -109,22 +166,69 @@
     }
 
     @keyframes badWalk {
-      0%   { transform: translate(0vw, 0vh) scaleX(1) rotate(0deg); }
-      5%   { transform: translate(5vw, 0vh) scaleX(1) rotate(2deg); }
-      10%  { transform: translate(10vw, 0vh) scaleX(1) rotate(-2deg); }
-      15%  { transform: translate(20vw, 0vh) scaleX(1) rotate(3deg); }
-      20%  { transform: translate(30vw, 0vh) scaleX(1) rotate(-3deg); }
-      25%  { transform: translate(40vw, 0vh) scaleX(-1) rotate(0deg); }
-      30%  { transform: translate(35vw, 10vh) scaleX(-1) rotate(1deg); }
-      35%  { transform: translate(30vw, 10vh) scaleX(-1) rotate(-1deg); }
-      40%  { transform: translate(20vw, 10vh) scaleX(-1) rotate(2deg); }
-      45%  { transform: translate(10vw, 10vh) scaleX(-1) rotate(-2deg); }
-      50%  { transform: translate(0vw, 10vh) scaleX(1) rotate(0deg); }
-      60%  { transform: translate(10vw, 20vh) scaleX(1) rotate(3deg); }
-      70%  { transform: translate(30vw, 20vh) scaleX(1) rotate(-3deg); }
-      80%  { transform: translate(50vw, 20vh) scaleX(1) rotate(2deg); }
-      90%  { transform: translate(70vw, 20vh) scaleX(1) rotate(-2deg); }
-      100% { transform: translate(0vw, 40vh) scaleX(-1) rotate(0deg); }
+      0% {
+        transform: translate(0vw, 0vh) scaleX(1) rotate(0deg);
+      }
+
+      5% {
+        transform: translate(5vw, 0vh) scaleX(1) rotate(2deg);
+      }
+
+      10% {
+        transform: translate(10vw, 0vh) scaleX(1) rotate(-2deg);
+      }
+
+      15% {
+        transform: translate(20vw, 0vh) scaleX(1) rotate(3deg);
+      }
+
+      20% {
+        transform: translate(30vw, 0vh) scaleX(1) rotate(-3deg);
+      }
+
+      25% {
+        transform: translate(40vw, 0vh) scaleX(-1) rotate(0deg);
+      }
+
+      30% {
+        transform: translate(35vw, 10vh) scaleX(-1) rotate(1deg);
+      }
+
+      35% {
+        transform: translate(30vw, 10vh) scaleX(-1) rotate(-1deg);
+      }
+
+      40% {
+        transform: translate(20vw, 10vh) scaleX(-1) rotate(2deg);
+      }
+
+      45% {
+        transform: translate(10vw, 10vh) scaleX(-1) rotate(-2deg);
+      }
+
+      50% {
+        transform: translate(0vw, 10vh) scaleX(1) rotate(0deg);
+      }
+
+      60% {
+        transform: translate(10vw, 20vh) scaleX(1) rotate(3deg);
+      }
+
+      70% {
+        transform: translate(30vw, 20vh) scaleX(1) rotate(-3deg);
+      }
+
+      80% {
+        transform: translate(50vw, 20vh) scaleX(1) rotate(2deg);
+      }
+
+      90% {
+        transform: translate(70vw, 20vh) scaleX(1) rotate(-2deg);
+      }
+
+      100% {
+        transform: translate(0vw, 40vh) scaleX(-1) rotate(0deg);
+      }
     }
   </style>
 </head>
@@ -162,7 +266,11 @@
       id="popupBox" style="opacity:0; transform:scale(0);">
       <div class="text-5xl mb-4">🎉</div>
       <div class="text-3xl font-bold mb-6">BASSANT!!!</div>
-      <div class="text-xl mb-6">JE BENT EEN NIGGGGEEERRRRR! (en btw je gaat nooit trouwen)</div>
+      <div>
+        <div class="text-xl mb-6">JE GAAT NOOIT TROUWEN IN JE LEVEN!!!!
+        </div>
+        <div class="pb-4">(en je bent een niggerrrr! btw)</div>
+      </div>
       <button id="closePopup"
         class="bg-white text-black px-6 py-2 rounded-xl font-semibold hover:scale-105 transition-transform duration-200">Sluiten</button>
     </div>
@@ -232,4 +340,3 @@
 </body>
 
 </html>
-
