@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Cadeau</title>
+
+  <style>
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.4);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100vh) rotate(0);
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+      }
+    }
+
+    @keyframes spotlightMove {
+      0% {
+        transform: rotate(-25deg) translateX(-30vw);
+      }
+
+      50% {
+        transform: rotate(25deg) translateX(30vw);
+      }
+
+      100% {
+        transform: rotate(-25deg) translateX(-30vw);
+      }
+    }
+
+    @keyframes spotlightMove2 {
+      0% {
+        transform: rotate(25deg) translateX(30vw);
+      }
+
+      50% {
+        transform: rotate(-25deg) translateX(-30vw);
+      }
+
+      100% {
+        transform: rotate(25deg) translateX(30vw);
+      }
+    }
+
+    @keyframes rainbow {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    .rainbowGlow {
+      animation: rainbow 3s linear infinite;
+    }
+
+    .spotlight {
+      position: absolute;
+      width: 350px;
+      height: 120vh;
+      top: -20vh;
+      background: linear-gradient(to bottom, rgba(255, 0, 0, 0.45), rgba(255, 0, 0, 0));
+      filter: blur(35px);
+      transform-origin: top center;
+      pointer-events: none;
+      animation: rainbow 2s linear infinite;
+      mix-blend-mode: screen;
+    }
+
+    @keyframes boomFlash {
+      0% {
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes shockwave {
+      0% {
+        transform: scale(0);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    #flash {
+      position: fixed;
+      inset: 0;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    #shock {
+      position: fixed;
+      width: 200px;
+      height: 200px;
+      border: 6px solid white;
+      border-radius: 9999px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 51;
+    }
+  </style>
+</head>
+
+<body class="bg-black text-white flex items-center justify-center min-h-screen overflow-hidden">
+
+  <audio id="bgMusic" loop>
+    <source src="Koor Al Wahda - Lieve Zuster - AlWahdaNL (mp3cut.net).mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="flash"></div>
+  <div id="shock"></div>
+
+  <div id="gift"
+    class="bg-gray-900 border border-gray-700 rounded-2xl p-10 cursor-pointer shadow-xl text-center hover:scale-110 transition-all duration-300"
+    style="animation: float 3s ease-in-out infinite;">
+    <div class="text-7xl mb-4">🎁</div>
+    <div class="text-xl font-semibold">Klik voor een verrassing bassant!!</div>
+  </div>
+
+  <div id="popup" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm">
+    <div id="spotContainer" class="absolute inset-0 -z-10 hidden">
+      <div class="spotlight"
+        style="left: 10%; animation: spotlightMove 6s infinite linear, rainbow 1.5s infinite linear;"></div>
+      <div class="spotlight"
+        style="left: 70%; animation: spotlightMove2 7s infinite linear, rainbow 1.5s infinite linear;"></div>
+      <div class="spotlight"
+        style="left: 40%; animation: spotlightMove 8s infinite ease-in-out, rainbow 1.5s infinite linear;"></div>
+    </div>
+
+    <div
+      class="relative bg-gray-900 p-8 rounded-2xl border border-gray-700 text-center shadow-[0_0_40px_rgba(255,255,255,0.8)] rainbowGlow"
+      id="popupBox" style="opacity:0; transform:scale(0);">
+      <div class="text-5xl mb-4">🎉</div>
+      <div class="text-3xl font-bold mb-6">BASSANT!!!</div>
+      <div class="text-xl mb-6">JE BENT EEN MEGA SSSSSSS!</div>
+      <button id="closePopup"
+        class="bg-white text-black px-6 py-2 rounded-xl font-semibold hover:scale-105 transition-transform duration-200">Sluiten</button>
+    </div>
+  </div>
+
+  <script>
+    const gift = document.getElementById("gift")
+    const popup = document.getElementById("popup")
+    const popupBox = document.getElementById("popupBox")
+    const spotContainer = document.getElementById("spotContainer")
+    const closePopup = document.getElementById("closePopup")
+    const flash = document.getElementById("flash")
+    const shock = document.getElementById("shock")
+    const bgMusic = document.getElementById("bgMusic")
+
+    function explosion() {
+      flash.style.animation = "boomFlash 0.4s ease-out"
+      shock.style.animation = "shockwave 0.6s ease-out"
+      setTimeout(() => { flash.style.animation = ""; shock.style.animation = ""; }, 700)
+    }
+
+    function spawnConfetti() {
+      for (let i = 0; i < 80; i++) {
+        const conf = document.createElement("div")
+        conf.style.position = "fixed"
+        conf.style.top = "-20px"
+        conf.style.left = Math.random() * 100 + "vw"
+        conf.style.width = "8px"
+        conf.style.height = "14px"
+        conf.style.borderRadius = "2px"
+        conf.style.background = `hsl(${Math.random() * 360}, 80%, 60%)`
+        conf.style.opacity = "0.9"
+        conf.style.animation = `confettiFall ${1 + Math.random() * 1.5}s linear forwards`
+        document.body.appendChild(conf)
+        setTimeout(() => conf.remove(), 2500)
+      }
+    }
+
+    gift.onclick = () => {
+      explosion()
+      bgMusic.play()
+
+      popup.classList.remove("hidden")
+      popup.classList.add("flex")
+      spotContainer.classList.remove("hidden")
+
+      setTimeout(() => {
+        popupBox.style.opacity = "1"
+        popupBox.style.transform = "scale(1)"
+        popupBox.style.animation = "popIn 0.4s ease-out forwards"
+      }, 80)
+
+      spawnConfetti()
+    }
+
+    closePopup.onclick = () => {
+      popup.classList.add("hidden")
+      popup.classList.remove("flex")
+      spotContainer.classList.add("hidden")
+      popupBox.style.opacity = "0"
+      popupBox.style.transform = "scale(0)"
+      bgMusic.pause()
+      bgMusic.currentTime = 0
+    }
+  </script>
+
+</body>
+
+</html>
